@@ -26,8 +26,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         Employee employee = new Employee();
         employee.setName(request.getName());
-        employee.setPosition(request.getPosition());
+        employee.setEmail(request.getEmail());
         employee.setSalary(request.getSalary());
+        employee.setPosition(request.getPosition());
 
         Employee saved = repository.save(employee);
 
@@ -44,12 +45,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     private EmployeeResponse toResponse(Employee employee) {
+
         EmployeeResponse response = new EmployeeResponse();
         response.setId(employee.getId());
         response.setName(employee.getName());
-        response.setPosition(employee.getPosition());
+        response.setEmail(employee.getEmail());
         response.setSalary(employee.getSalary());
+        response.setPosition(employee.getPosition());
         response.setCreatedAt(employee.getCreatedAt());
+
         return response;
     }
 }

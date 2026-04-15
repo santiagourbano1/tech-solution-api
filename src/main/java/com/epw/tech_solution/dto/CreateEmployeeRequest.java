@@ -1,42 +1,55 @@
 package com.epw.tech_solution.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 
 public class CreateEmployeeRequest {
 
-    @NotBlank(message = "Name is required")
+    @NotBlank
     private String name;
 
-    private String position;
+    @NotBlank
+    @Email
+    private String email;
 
-    @NotNull(message = "Salary is required")
-    @Positive(message = "Salary must be positive")
+    @NotNull
     private Double salary;
 
+    @NotBlank
+    private String position;
+
     // Getters and Setters
+
     public String getName() {
         return name;
     }
 
-    public String getPosition() {
-        return position;
+    public String getEmail() {
+        return email;
     }
 
     public Double getSalary() {
         return salary;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

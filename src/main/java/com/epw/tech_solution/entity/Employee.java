@@ -21,11 +21,14 @@ public class Employee {
     @Column(nullable = false, length = 120)
     private String name;
 
-    @Column(length = 120)
-    private String position;
+    @Column(nullable = false, unique = true, length = 150)
+    private String email;
 
     @Column(nullable = false)
     private Double salary;
+
+    @Column(nullable = false, length = 120)
+    private String position;
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
@@ -36,6 +39,7 @@ public class Employee {
     }
 
     // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -44,12 +48,16 @@ public class Employee {
         return name;
     }
 
-    public String getPosition() {
-        return position;
+    public String getEmail() {
+        return email;
     }
 
     public Double getSalary() {
         return salary;
+    }
+
+    public String getPosition() {
+        return position;
     }
 
     public Instant getCreatedAt() {
@@ -64,12 +72,16 @@ public class Employee {
         this.name = name;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public void setCreatedAt(Instant createdAt) {

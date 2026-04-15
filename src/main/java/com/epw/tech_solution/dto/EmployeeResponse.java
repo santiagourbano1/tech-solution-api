@@ -6,11 +6,11 @@ public class EmployeeResponse {
 
     private Long id;
     private String name;
-    private String position;
+    private String email;
     private Double salary;
+    private String position;
     private Instant createdAt;
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -19,12 +19,16 @@ public class EmployeeResponse {
         return name;
     }
 
-    public String getPosition() {
-        return position;
+    public String getEmail() {
+        return email;
     }
 
     public Double getSalary() {
         return salary;
+    }
+
+    public String getPosition() {
+        return position;
     }
 
     public Instant getCreatedAt() {
@@ -39,12 +43,16 @@ public class EmployeeResponse {
         this.name = name;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public void setCreatedAt(Instant createdAt) {
