@@ -44,6 +44,41 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .toList();
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public EmployeeResponse getById(Long id) {
+
+        Employee employee = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+
+        return toResponse(employee);
+    }
+
+    @Override
+    public EmployeeResponse update(Long id, CreateEmployeeRequest request) {
+
+        Employee employee = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+
+        employee.setName(request.getName());
+        employee.setEmail(request.getEmail());
+        employee.setSalary(request.getSalary());
+        employee.setPosition(request.getPosition());
+
+        Employee updated = repository.save(employee);
+
+        return toResponse(updated);
+    }
+
+    @Override
+    public void delete(Long id) {
+
+        Employee employee = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Employee not found with id: " + id));
+
+        repository.delete(employee);
+    }
+
     private EmployeeResponse toResponse(Employee employee) {
 
         EmployeeResponse response = new EmployeeResponse();
