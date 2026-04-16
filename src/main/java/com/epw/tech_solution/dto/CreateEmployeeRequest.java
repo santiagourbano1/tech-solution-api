@@ -19,6 +19,9 @@ public class CreateEmployeeRequest {
     @NotBlank
     private String position;
 
+    @NotNull
+    private Long departmentId;
+
     // Getters and Setters
 
     public String getName() {
@@ -37,6 +40,10 @@ public class CreateEmployeeRequest {
         return position;
     }
 
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -51,5 +58,9 @@ public class CreateEmployeeRequest {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
     }
 }

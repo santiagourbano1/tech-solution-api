@@ -4,9 +4,12 @@ import java.time.Instant;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
@@ -30,6 +33,11 @@ public class Employee {
     @Column(nullable = false, length = 120)
     private String position;
 
+    // RELATION MANY TO ONE
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
+
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
@@ -38,7 +46,7 @@ public class Employee {
         this.createdAt = Instant.now();
     }
 
-    // Getters and Setters
+    // GETTERS AND SETTERS
 
     public Long getId() {
         return id;
@@ -58,6 +66,10 @@ public class Employee {
 
     public String getPosition() {
         return position;
+    }
+
+    public Department getDepartment() {
+        return department;
     }
 
     public Instant getCreatedAt() {
@@ -82,6 +94,10 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public void setCreatedAt(Instant createdAt) {

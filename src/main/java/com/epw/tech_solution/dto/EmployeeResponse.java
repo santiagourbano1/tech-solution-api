@@ -11,6 +11,9 @@ public class EmployeeResponse {
     private String position;
     private Instant createdAt;
 
+    private Long departmentId;
+    private String departmentName; // 👈 nuevo
+
     public Long getId() {
         return id;
     }
@@ -35,6 +38,14 @@ public class EmployeeResponse {
         return createdAt;
     }
 
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -57,5 +68,13 @@ public class EmployeeResponse {
 
     public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }
